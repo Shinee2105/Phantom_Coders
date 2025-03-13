@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Dashboard</title>
+    <link rel="stylesheet" href="tutor.css">
+    <link rel="stylesheet" href="../styles/common.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome, Tutor</h1>
+        <nav>
+            <ul>
+                <li><a href="#students">Student Progress</a></li>
+                <li><a href="#quiz">Set Quiz Difficulty</a></li>
+                <li><a href="#courses">Manage Courses</a></li>
+                <li><a href="#upload">Upload PDF</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="students">
+        <h2>Student Progress</h2>
+        <ul>
+            <li>Student 1 - Completion: 70% <progress value="70" max="100"></progress></li>
+            <li>Student 2 - Completion: 50% <progress value="50" max="100"></progress></li>
+        </ul>
+    </section>
+    
+    <section id="quiz">
+        <h2>Set Quiz Difficulty</h2>
+        <label for="difficulty">Choose Difficulty:</label>
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <button>Set Difficulty</button>
+    </section>
+
+    <section id="courses">
+        <h2>Create & Manage Courses</h2>
+        <input type="text" placeholder="Enter Course Title">
+        <textarea placeholder="Enter Course Description"></textarea>
+        <button>Create Course</button>
+    </section>
+
+    <section id="upload">
+        <h2>Upload Course Material</h2>
+        <input type="file" id="pdfUpload" accept=".pdf">
+        <button onclick="previewPDF()">Preview PDF</button>
+        <div id="pdfPreview"></div>
+    </section>
+
+    <script src="tutor.js"></script>
+</body>
+</html>

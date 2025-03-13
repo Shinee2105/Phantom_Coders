@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="student.css">
+    <link rel="stylesheet" href="../styles/common.css">
+    <style>
+        /* Ensure body has enough space for the button */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+        }
+
+        /* Style for profile button */
+        #profile-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%; /* Circular button */
+            font-size: 36px; /* Increased font size for letter "P" */
+            width: 80px; /* Button size */
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            width: 350px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Animation for modal fade-in effect */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Profile Picture and Text Styling */
+        .profile-header {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            background-color: #ddd;
+            display: inline-block;
+            background-image: url('https://via.placeholder.com/80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-info {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .profile-info strong {
+            color: #333;
+        }
+
+        /* Close button styling */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Button Styling */
+        .btn-close {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-close:hover {
+            background-color: #0056b3;
+        }
+
+        /* Smaller Logout Button Styling outside the modal */
+        .btn-logout {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 2px;  /* Reduced padding */
+            border: none;
+            border-radius: 8px; /* Box shape */
+            cursor: pointer;
+            font-size: 16px;    /* Restored font size */
+            width: 90px;        /* Explicit width to reduce length */
+            z-index: 9999;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Profile Button -->
+    <button id="profile-btn">P</button>
+
+    <!-- Profile Popup Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="profile-header">
+                <div class="profile-pic"></div>
+                <h2>John Doe</h2>
+            </div>
+            <div class="profile-info">
+                <p><strong>Username:</strong> JohnDoe123</p>
+                <p><strong>Email:</strong> johndoe@example.com</p>
+            </div>
+            <button class="btn-close">Close</button>
+        </div>
+    </div>
+
+    <header>
+        <h1>Welcome, Student</h1>
+        <nav>
+            <ul>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#quiz">Take Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="courses">
+        <h2>Courses Undertaken</h2>
+        <ul>
+            <li>Course 1</li>
+            <li>Course 2</li>
+        </ul>
+        <button>Enroll in a New Course</button>
+    </section>
+    
+    <section id="progress">
+        <h2>Progress Level</h2>
+        <p>Course Completion: 60%</p>
+        <progress value="60" max="100"></progress>
+    </section>
+    
+    <section id="quiz">
+        <h2>Take a Quiz</h2>
+        <button>Start Quiz</button>
+    </section>
+
+    <div id="chatbot">
+        <p>Chatbot Assistant</p>
+        <input type="text" placeholder="Ask a question...">
+        <button>Send</button>
+    </div>
+
+    <!-- Logout Button outside the modal -->
+    <button class="btn-logout" id="logout-btn">Logout</button>
+
+    <script>
+        // Get modal elements
+        var modal = document.getElementById("profile-modal");
+        var btn = document.getElementById("profile-btn");
+        var closeBtn = document.getElementsByClassName("close")[0];
+        var btnCloseModal = document.querySelector(".btn-close");
+        var btnLogout = document.getElementById("logout-btn");
+
+        // Open modal when clicking profile button
+        btn.onclick = function() {
+            modal.style.display = "flex";
+        };
+
+        // Close modal when clicking close button
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Close modal when clicking close button on the modal content
+        btnCloseModal.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        // Confirm logout
+        btnLogout.onclick = function() {
+            var confirmLogout = confirm("Are you sure you want to log out?");
+            if (confirmLogout) {
+                window.location.href = "../login/login.html"; // Redirect to login page
+            }
+        };
+
+        // Run Python script when "Start Quiz" is clicked
+        document.querySelector("#quiz button").addEventListener("click", function() {
+            fetch('/start_quiz')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        alert("Quiz Started! Output: " + data.output);
+                    } else {
+                        alert("Error: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert("Something went wrong: " + error);
+                });
+        });
+    </script>
+
+</body>
+</html>

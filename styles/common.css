@@ -1,0 +1,165 @@
+gradient
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🔥 Dynamic Animated Gradient Background */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #667eea, #764ba2, #ff758c, #ff7eb3);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    transition: all 0.5s ease;
+}
+
+/* 🔄 Gradient Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ✨ Glassmorphism Effect */
+#role-selection, #login-form {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 320px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* 🎨 Headings */
+h2 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* 🎯 Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 📌 Student Button */
+button:first-of-type {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: white;
+}
+
+/* 📌 Tutor Button */
+button:last-of-type {
+    background: linear-gradient(135deg, #FF416C, #FF4B2B);
+    color: white;
+}
+
+/* ✨ Button Hover Effect */
+button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* 🔲 Input Fields */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #ddd;
+}
+
+/* 🚨 Error Message */
+#error-message {
+    color: red;
+    font-size: 14px;
+}
+
+/* 📌 Navigation Bar */
+header {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* 🎯 Navigation Links */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
+}
+
+/* 🎨 Sections */
+section {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+/* 🤖 Floating Chatbot */
+#chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#chatbot:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+}

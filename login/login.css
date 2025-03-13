@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+#role-selection {
+  text-align: center;
+}
+
+#login-form {
+  text-align: center;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#login-title {
+  font-size: 24px;
+}
+
+#error-message {
+  color: red;
+}

@@ -1,0 +1,13 @@
+/* styles/tutor.css */
+.tutor-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fffacd;
+  }
+  
+  h2 {
+    color: #8b4513;
+  }
+  

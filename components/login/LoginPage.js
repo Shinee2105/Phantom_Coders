@@ -6,6 +6,7 @@ import '../../styles/login.css';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState(''); // Added username state
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -43,7 +44,7 @@ const LoginPage = () => {
       }
 
       // Successful login, navigate to the student dashboard
-      navigate('/student');  // Adjust if necessary
+      navigate('/student', { state: { username: username } });  // Passing Username
     } catch (err) {
       setError(err.message);
     }
@@ -58,6 +59,17 @@ const LoginPage = () => {
       <div className="login-card">
         <h2>Welcome!</h2>
         <form onSubmit={handleSubmit}>
+           <div className="input-group">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
           <div className="input-group">
             <label htmlFor="email">Email:</label>
             <input
